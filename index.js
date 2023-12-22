@@ -33,58 +33,6 @@ async function run() {
         const taskCollection = client.db('TaskMS').collection('task');
         const userCollection = client.db('TaskMS').collection('users');
 
-
-        // const taskSchema = {
-        //     title: {
-        //         type: 'string',
-        //         required: true,
-        //     },
-        //     status: {
-        //         type: 'string',
-        //         enum: ['todo', 'ongoing', 'completed'],
-        //         default: 'todo',
-        //     },
-        // };
-
-        // // const newTask = {
-        // //     title: 'Example Task',
-        // //     status: 'todo',
-        // // }
-
-
-        // const result = await taskCollection.insertOne();
-        // console.log('Inserted task with ID:', result.insertedId);
-
-        // // Find tasks with a specific status
-        // const todoTasks = await taskCollection.find({ status: 'todo' }).toArray();
-        // console.log('Tasks with status "todo":', todoTasks);
-
-        // // Update a task's status
-        // const taskIdToUpdate = result.insertedId;
-        // await taskCollection.updateOne({ _id: taskIdToUpdate }, { $set: { status: 'completed' } });
-        // console.log('Task updated');
-
-        // // Find all tasks
-        // const allTasks = await taskCollection.find({}).toArray();
-        // console.log('All tasks:', allTasks);
-
-
-
-        // // Add this new endpoint to handle updating the task order
-        // // ...
-
-        // // Add this new endpoint to handle updating the task status when dragging between lists
-        // app.put('/task/updateStatus', async (req, res) => {
-        //     const { taskId, newStatus } = req.body;
-          
-        //         await taskCollection.updateOne({ _id: taskId }, { $set: { status: newStatus } });
-        //         res.status(200).json({ message: 'Task status updated successfully' });
-        //     } );
-
-        // // ...
-
-
-
         app.get('/task', async (req, res) => {
             const result = await taskCollection.find().toArray();
             res.send(result);
